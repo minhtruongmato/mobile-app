@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/dest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/dest/vendors/colorbox/example3/colorbox.css">
+    <link rel="stylesheet" title="style" href="%PUBLIC_URL%/assets/dest/css/style.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/dest/css/animate.css">
+    <link rel="stylesheet" title="style" href="%PUBLIC_URL%/assets/dest/css/huong-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <title>React App</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="%PUBLIC_URL%/assets/dest/js/jquery.js"></script>
+    <script src="%PUBLIC_URL%/assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/dest/vendors/bxslider/jquery.bxslider.min.js"></script>
+    <script src="%PUBLIC_URL%/assets/dest/vendors/colorbox/jquery.colorbox-min.js"></script>
+    <script src="%PUBLIC_URL%/assets/dest/vendors/animo/Animo.js"></script>
+    <script src="%PUBLIC_URL%/assets/dest/vendors/dug/dug.js"></script>
+    <script src="%PUBLIC_URL%/assets/dest/js/scripts.min.js"></script>
+    <!--customjs-->
+    <script type="text/javascript">
+        $(function () {
+            // this will get the full URL at the address bar
+            var url = window.location.href;
+
+            // passes on every "a" tag
+            $(".main-menu a").each(function () {
+                // checks if its the same on the address bar
+                if (url == (this.href)) {
+                    $(this).closest("li").addClass("active");
+                    $(this).parents('li').addClass('parent-active');
+                }
+            });
+        });
+    </script>
+    <script>
+        jQuery(document).ready(function ($) {
+            'use strict';
+            jQuery('#style-selector').animate({
+                left: '-213px'
+            });
+
+            jQuery('#style-selector a.close').click(function (e) {
+                e.preventDefault();
+                var div = jQuery('#style-selector');
+                if (div.css('left') === '-213px') {
+                    jQuery('#style-selector').animate({
+                        left: '0'
+                    });
+                    jQuery(this).removeClass('icon-angle-left');
+                    jQuery(this).addClass('icon-angle-right');
+                } else {
+                    jQuery('#style-selector').animate({
+                        left: '-213px'
+                    });
+                    jQuery(this).removeClass('icon-angle-right');
+                    jQuery(this).addClass('icon-angle-left');
+                }
+            });
+            $('.btn-number').click(function (e) {
+                e.preventDefault();
+
+                var fieldName = $(this).attr('data-field');
+                var type = $(this).attr('data-type');
+                var input = $(this).parent().parent().children('input');
+                var currentVal = parseInt(input.val());
+                if (!isNaN(currentVal)) {
+                    if (type == 'minus') {
+
+                        if (currentVal > input.attr('min')) {
+                            input.val(currentVal - 1).change();
+                        }
+                        if (parseInt(input.val()) === 1) {
+                            $(this).attr('disabled', true);
+                        }
+
+                    } else if (type == 'plus') {
+
+                        if (currentVal < input.attr('max')) {
+                            input.val(currentVal + 1).change();
+                        }
+                        $(this).parent().prev().prev().children().attr('disabled', false);
+
+                    }
+                } else {
+                    input.val(0);
+                }
+            });
+            $('.bxslider').bxSlider({
+              auto: true,
+              autoControls: true,
+              stopAutoOnClick: true,
+              pager: true,
+          });
+        });
+    </script>
+</body>
+
+</html>

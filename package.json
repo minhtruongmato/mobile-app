@@ -1,0 +1,24 @@
+{
+  "name": "mobile-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "img-loader": "^3.0.0",
+    "qs": "^6.5.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "*",
+    "react-router-dom": "*",
+    "react-scripts": "1.1.5",
+    "react-slideshow-image": "^1.0.0",
+    "redux": "*",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
